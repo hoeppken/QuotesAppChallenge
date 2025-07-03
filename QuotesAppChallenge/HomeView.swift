@@ -6,15 +6,47 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+    @Query private var quote : [Quote]
+    
+    
     var body: some View {
-        VStack {
-            Text ("Quotes").font(.largeTitle).fontWeight(.bold).multilineTextAlignment(.leading).padding(20.0).font(.system(size: 30, weight: .bold, design: .default))
+        
+        NavigationStack {
             
-            //add cardview hier
+            VStack (alignment: .leading){
+                
+                Text("Quotes")
+                    .font(.largeTitle).toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            //add quote
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+
+                    }
+                }
+                
+                ScrollView {
+                    
+                    VStack (alignment: .center){
+                        
+                        ForEach (quote) { q in
+                            
+                            CardView(quote: q)
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            }
         }
-        .padding()
     }
 }
 
