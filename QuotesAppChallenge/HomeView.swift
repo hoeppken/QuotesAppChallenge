@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    
     @Query private var quote : [Quote]
     
     
@@ -19,33 +20,34 @@ struct HomeView: View {
             VStack (alignment: .leading){
                 
                 Text("Quotes")
-                    .font(.largeTitle).toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            //add quote
-                        } label: {
-                            Image(systemName: "plus")
+                    .font(Font.largeTitle)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button {
+                                //add quote
+                            } label: {
+                                Image(systemName: "plus")
+                            }
+                            
                         }
-
                     }
-                }
                 
                 ScrollView {
                     
-                    VStack (alignment: .center){
+                    List {
                         
-                        ForEach (quote) { q in
                             
-                            CardView(quote: q)
-                            
-                        }
-                        
+                           // ForEach (quote) { q in
+                                
+                                CardView()
+                                
+                           // }
                         
                     }
                     
                 }
                 
-            }
+            }.padding()
         }
     }
 }
