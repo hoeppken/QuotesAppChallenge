@@ -31,19 +31,23 @@ struct HomeView: View {
                             
                         }
                     }
+                    .bold()
+                    
                 
                 ScrollView {
                     
-                    List {
-                        
-                            
-                           // ForEach (quote) { q in
-                                
-                                CardView()
-                                
-                           // }
-                        
-                    }
+                    
+                    
+                    
+                    // ForEach (quote) { q in
+                    
+                    CardView()
+                    CardView()
+                    CardView()
+                    
+                    // }
+                    
+                    
                     
                 }
                 
