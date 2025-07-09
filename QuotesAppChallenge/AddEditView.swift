@@ -11,7 +11,9 @@ struct AddEditView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
-    @State var quote : String = ""
+    var quote : Quote
+    @State private var quoteText : String = ""
+    @State private var quoteAuthor : String = ""
     
     var body: some View {
         
@@ -24,14 +26,14 @@ struct AddEditView: View {
                 
                 Text("Quote").font(.callout)
                 
-                TextField(LocalizedStringKey("Type Quote Text"), text: $quote)
+                TextField(LocalizedStringKey("Type Quote Text"), text: $quoteText)
                     .textFieldStyle(.roundedBorder)
             }
             VStack (alignment : .leading, spacing : 10){
                 
                 Text("Author").font(.callout)
                 
-                TextField(LocalizedStringKey("Type Quote Author"), text: $quote)
+                TextField(LocalizedStringKey("Type Quote Author"), text: $quoteAuthor)
                     .textFieldStyle(.roundedBorder)
             }
             HStack{
@@ -68,5 +70,5 @@ struct AddEditView: View {
 }
 
 #Preview {
-    AddEditView()
+    AddEditView(quote: Quote())
 }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    var quote: Quote
+    
     var body: some View {
         
         HStack {
@@ -39,5 +42,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView()
+    CardView(quote: Quote())
 }

@@ -10,7 +10,8 @@ import SwiftData
 
 struct HomeView: View {
     
-    @Query private var quote : [Quote]
+    @Query private var quotes : [Quote]
+    @State private var selectedQuote : Quote?
     
     
     var body: some View {
@@ -25,6 +26,7 @@ struct HomeView: View {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button {
                                 //add quote
+                                NavigationLink("", destination: AddEditView(quote: Quote()))
                             } label: {
                                 Image(systemName: "plus")
                             }
@@ -36,22 +38,22 @@ struct HomeView: View {
                 
                 ScrollView {
                     
+                    ForEach(quotes) { q in
                     
+                        CardView(quote: q).onTapGesture {
+                            selectedQuote = q
+                        }
+                 
                     
-                    
-                    // ForEach (quote) { q in
-                    
-                    CardView()
-                    CardView()
-                    CardView()
-                    
-                    // }
+                     }
                     
                     
                     
                 }
                 
-            }.padding()
+            }.padding().navigationDestination(item: $selectedQuote) { quote in
+                    AddEditView(quote: quote)
+            }
         }
     }
 }
