@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddEditView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     var quote : Quote
+    var isEditMode: Bool
     @State private var quoteText : String = ""
     @State private var quoteAuthor : String = ""
     
@@ -70,5 +72,5 @@ struct AddEditView: View {
 }
 
 #Preview {
-    AddEditView(quote: Quote())
+    AddEditView(quote: Quote(), isEditMode: true)
 }

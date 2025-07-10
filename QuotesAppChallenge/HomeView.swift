@@ -24,13 +24,9 @@ struct HomeView: View {
                     .font(Font.largeTitle)
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                //add quote
-                                NavigationLink("", destination: AddEditView(quote: Quote()))
-                            } label: {
+                            NavigationLink(destination: AddEditView(quote: Quote(), isEditMode: false)) {
                                 Image(systemName: "plus")
                             }
-                            
                         }
                     }
                     .bold()
@@ -40,8 +36,10 @@ struct HomeView: View {
                     
                     ForEach(quotes) { q in
                     
-                        CardView(quote: q).onTapGesture {
+                        CardView(quote: q)
+                            .onTapGesture {
                             selectedQuote = q
+                            
                         }
                  
                     
@@ -51,8 +49,9 @@ struct HomeView: View {
                     
                 }
                 
-            }.padding().navigationDestination(item: $selectedQuote) { quote in
-                    AddEditView(quote: quote)
+            }.padding()
+                .navigationDestination(item: $selectedQuote) { quote in
+                    AddEditView(quote: Quote(), isEditMode: true)
             }
         }
     }

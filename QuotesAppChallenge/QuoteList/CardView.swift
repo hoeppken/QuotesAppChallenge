@@ -11,6 +11,8 @@ struct CardView: View {
     
     var quote: Quote
     
+    
+    
     var body: some View {
         
         HStack {
