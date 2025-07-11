@@ -51,7 +51,7 @@ struct HomeView: View {
                 
             }.padding()
                 .navigationDestination(item: $selectedQuote) { quote in
-                    AddEditView(quote: Quote(), isEditMode: true)
+                    AddEditView(quote: quote, isEditMode: true)
             }
         }
     }

@@ -28,14 +28,14 @@ struct AddEditView: View {
                 
                 Text("Quote").font(.callout)
                 
-                TextField(LocalizedStringKey("Type Quote Text"), text: $quoteText)
+                TextField("Type Quote Text", text: $quoteText)
                     .textFieldStyle(.roundedBorder)
             }
             VStack (alignment : .leading, spacing : 10){
                 
                 Text("Author").font(.callout)
                 
-                TextField(LocalizedStringKey("Type Quote Author"), text: $quoteAuthor)
+                TextField("Type Quote Author", text: $quoteAuthor)
                     .textFieldStyle(.roundedBorder)
             }
             HStack{
@@ -43,6 +43,12 @@ struct AddEditView: View {
                 Button {
                     //add the focus to the project
                     //Quotes.quote = quote
+                    if isEditMode {
+                        quote.text = quoteText
+                    }else {
+                        quote.text = quoteText
+                        context.insert(quote)
+                    }
                     
                     dismiss()
                     

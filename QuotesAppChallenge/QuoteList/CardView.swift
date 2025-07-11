@@ -21,7 +21,7 @@ struct CardView: View {
                 RoundedRectangle (cornerRadius: 15)
                     .shadow(radius: 10, x:0, y:4)
                 VStack {
-                    Text("\"Quote text hier in a way it can be readed easily.\" ").foregroundStyle(.white)
+                    Text(String("\"")+quote.text+String("\"")).foregroundStyle(.white)
                     Spacer()
                     HStack {
                         Spacer()
