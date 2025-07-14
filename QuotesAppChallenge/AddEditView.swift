@@ -41,12 +41,13 @@ struct AddEditView: View {
             HStack{
                 
                 Button {
-                    //add the focus to the project
-                    //Quotes.quote = quote
+                
                     if isEditMode {
                         quote.text = quoteText
+                        quote.author = quoteAuthor
                     }else {
                         quote.text = quoteText
+                        quote.author = quoteAuthor
                         context.insert(quote)
                     }
                     
@@ -54,25 +55,28 @@ struct AddEditView: View {
                     
                 } label: {
                     Text ("Save")
-                }.buttonStyle(.borderedProminent)
+                }.buttonStyle(.borderedProminent).disabled(quoteText.isEmpty && quoteAuthor.isEmpty)
                 
                 Spacer()
                 
                 Button {
-                    //add the focus to the project
-                    //Quotes.quote = quote
+                    //delete quotes
                     
+                    context.delete(quote)
                     dismiss()
                     
                 } label: {
                     Text ("Delete")
-                }.buttonStyle(.plain).foregroundStyle(.red)
+                }.buttonStyle(.plain).foregroundStyle(.red).disabled(quoteText.isEmpty && quoteAuthor.isEmpty)
             }
               
                 
             
             
-        }.padding()
+        }.padding().onAppear { if isEditMode {
+            quoteText = quote.text
+            quoteAuthor = quote.author 
+        }}
         Spacer()
     }
 }

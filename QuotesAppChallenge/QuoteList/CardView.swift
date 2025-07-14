@@ -25,7 +25,7 @@ struct CardView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Text("- Authors name here")
+                        Text(String("-")+quote.author)
                             .foregroundStyle(.gray)
                             .multilineTextAlignment(.trailing)
                     }.padding(.horizontal)
